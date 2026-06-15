@@ -1,0 +1,45 @@
+name = "crm-cloudflare"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "crm-database"
+database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+migrations_dir = "migrations"
+
+# KV Namespace binding
+[[kv_namespaces]]
+binding = "KV"
+id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# R2 Bucket binding
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "crm-storage"
+
+# Queue Producer binding
+[[queues.producers]]
+binding = "BROADCAST_QUEUE"
+queue = "broadcast-messages"
+
+# Queue Consumer configuration
+[[queues.consumers]]
+queue = "broadcast-messages"
+max_batch_size = 10
+max_batch_timeout = 5
+
+# Environment variables (secrets should be set via `wrangler secret put`)
+[vars]
+GOWA_BASE_URL = "http://localhost:3000"
+
+# Note: The following should be configured as secrets, not plaintext vars:
+# CLERK_SECRET_KEY
+# GOWA_API_KEY
+# META_ACCESS_TOKEN
+# META_PHONE_NUMBER_ID
+# IPAYMU_API_KEY
+# IPAYMU_VA
+# IPAYMU_SECRET

@@ -1,0 +1,657 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Initialize Cloudflare Workers project with Hono, configure wrangler.toml bindings for D1, KV, R2, and Queues, and set up TypeScript configuration": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485871
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494492264
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494624389
+      }
+    ],
+    "1.2 Create D1 SQL schema migration file with all tables, indexes, and constraints": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485875
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494628017
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494876958
+      }
+    ],
+    "1.3 Define shared TypeScript types and interfaces for all services": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485878
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494628801
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494877713
+      }
+    ],
+    "1.4 Set up Vitest configuration with Cloudflare Workers pool and test directory structure": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485888
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494629652
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494878921
+      }
+    ],
+    "2.1 Implement authentication middleware that verifies Clerk session tokens and extracts organization context": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485891
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494882874
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495257158
+      }
+    ],
+    "2.2 Implement tenant resolution middleware with KV caching and D1 fallback": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485894
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494883723
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495257933
+      }
+    ],
+    "2.3 Implement RBAC permission checking utility": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485903
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494884505
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495258719
+      }
+    ],
+    "3.1 Implement rate limiting middleware using KV counters with per-tenant configurable limits": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485906
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494885371
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495259560
+      }
+    ],
+    "4.1 Implement contact validation utilities (E.164 phone format, required fields)": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485909
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494886227
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495261955
+      }
+    ],
+    "4.2 Implement contact CRUD service with tenant-scoped queries": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485917
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495268740
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495614062
+      }
+    ],
+    "4.3 Implement contact routes with Hono router": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485920
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495269508
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495614837
+      }
+    ],
+    "5. Checkpoint - Core middleware and contacts": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485923
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495628396
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495631410
+      }
+    ],
+    "6.1 Implement Go-Wa messaging service for sending messages and handling timeouts": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485930
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495642758
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496004177
+      }
+    ],
+    "6.2 Implement Go-Wa incoming message webhook handler with contact linking": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485933
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495643506
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496004952
+      }
+    ],
+    "6.3 Implement message routes for agent messaging": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485936
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496095704
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496376022
+      }
+    ],
+    "7.1 Implement broadcast service with quota validation and queue enqueuing": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485939
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495644347
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496005737
+      }
+    ],
+    "7.2 Implement broadcast queue consumer with Meta Cloud API integration and retry logic": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485942
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496096748
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496376952
+      }
+    ],
+    "7.3 Implement broadcast routes": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485945
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496097532
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496377738
+      }
+    ],
+    "8. Checkpoint - Messaging services": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485948
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496729090
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497024119
+      }
+    ],
+    "9.1 Implement billing service with iPaymu payment link generation": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485951
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495645102
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496006489
+      }
+    ],
+    "9.2 Implement iPaymu webhook handler with signature validation and idempotency": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485954
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496098600
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496378589
+      }
+    ],
+    "9.3 Implement billing routes": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485957
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496384759
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496722538
+      }
+    ],
+    "10.1 Implement file validation utility (size, filename length, content type)": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485960
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495645942
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496091253
+      }
+    ],
+    "10.2 Implement file storage service with R2 tenant-namespaced uploads and presigned URLs": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485963
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496099826
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496379859
+      }
+    ],
+    "10.3 Implement file routes": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485967
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496385564
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496721828
+      }
+    ],
+    "11. Checkpoint - Billing and file storage": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485970
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497027652
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497031875
+      }
+    ],
+    "12.1 Implement message status logging service with status transition tracking": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485973
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496386660
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496724289
+      }
+    ],
+    "12.2 Implement audit log query routes with filtering and pagination": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485976
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496730107
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497023137
+      }
+    ],
+    "13.1 Implement tenant isolation guard utility and cross-tenant access violation logging": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485979
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496387912
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496723418
+      }
+    ],
+    "14.1 Implement KV caching service with configurable TTL and D1 fallback": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485982
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496389009
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496721077
+      }
+    ],
+    "15.1 Implement webhook routes consolidating iPaymu and Go-Wa webhook endpoints": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485986
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496731234
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497022252
+      }
+    ],
+    "16.1 Wire all route modules into main Hono app and export queue handler": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485989
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496732652
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497021421
+      }
+    ],
+    "17. Final checkpoint": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494485992
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497028536
+      },
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497032612
+      }
+    ],
+    "1. Project setup and core infrastructure": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781494878925
+      }
+    ],
+    "2. Authentication and tenant resolution middleware": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495258722
+      }
+    ],
+    "3. Rate limiting middleware": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495259563
+      }
+    ],
+    "4. Contact management service and routes": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781495614840
+      }
+    ],
+    "6. WhatsApp operational messaging (Go-Wa)": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496376026
+      }
+    ],
+    "7. Broadcast messaging (Meta Cloud API)": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496377741
+      }
+    ],
+    "14. KV caching layer": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496721080
+      }
+    ],
+    "10. File and media storage": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496721832
+      }
+    ],
+    "9. Billing and payment (iPaymu)": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496722541
+      }
+    ],
+    "13. Tenant data isolation enforcement": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781496723422
+      }
+    ],
+    "16. Wire all routes and export queue consumer in main entry": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497021425
+      }
+    ],
+    "15. Webhook routes and Go-Wa webhook integration": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497022256
+      }
+    ],
+    "12. Audit trail and message logging": [
+      {
+        "executionId": "0396c824-19a2-4865-a1f1-38cd050ef212",
+        "chatSessionId": "73349dcf-d4af-4be0-95bd-bf577456feb4",
+        "timestamp": 1781497023140
+      }
+    ]
+  }
+}
