@@ -25,15 +25,45 @@ bucket_name = "crm-storage"
 binding = "BROADCAST_QUEUE"
 queue = "broadcast-messages"
 
+# Queue Producer binding for AI processing pipeline
+[[queues.producers]]
+binding = "AI_QUEUE"
+queue = "ai-processing"
+
+# Queue Producer binding for appointment reminders
+[[queues.producers]]
+binding = "REMINDER_QUEUE"
+queue = "appointment-reminders"
+
 # Queue Consumer configuration
 [[queues.consumers]]
 queue = "broadcast-messages"
 max_batch_size = 10
 max_batch_timeout = 5
 
+# Queue Consumer for AI processing pipeline
+[[queues.consumers]]
+queue = "ai-processing"
+max_batch_size = 5
+max_batch_timeout = 10
+
+# Queue Consumer for appointment reminders
+[[queues.consumers]]
+queue = "appointment-reminders"
+max_batch_size = 10
+max_batch_timeout = 30
+
 # Environment variables (secrets should be set via `wrangler secret put`)
 [vars]
 GOWA_BASE_URL = "http://localhost:3000"
+
+# Cron Triggers for scheduled tasks
+[triggers]
+crons = [
+  "0 0 1 * *",    # Monthly token counter reset (1st of each month at midnight UTC)
+  "0 2 * * *",    # Daily audit log purge (2:00 AM UTC)
+  "*/15 * * * *"  # Appointment reminder check (every 15 minutes)
+]
 
 # Note: The following should be configured as secrets, not plaintext vars:
 # CLERK_SECRET_KEY
@@ -43,3 +73,4 @@ GOWA_BASE_URL = "http://localhost:3000"
 # IPAYMU_API_KEY
 # IPAYMU_VA
 # IPAYMU_SECRET
+# ENCRYPTION_KEY - Used for encrypting tenant AI provider API keys at rest

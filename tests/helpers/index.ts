@@ -298,6 +298,8 @@ export function createMockBindings(overrides?: Partial<Bindings>): Bindings {
     KV: createMockKV(),
     R2: createMockR2(),
     BROADCAST_QUEUE: createMockQueue() as unknown as Queue,
+    AI_QUEUE: createMockQueue() as unknown as Queue,
+    REMINDER_QUEUE: createMockQueue() as unknown as Queue,
     CLERK_SECRET_KEY: 'test-clerk-secret-key',
     GOWA_BASE_URL: 'http://localhost:3000',
     GOWA_API_KEY: 'test-gowa-api-key',
@@ -306,6 +308,7 @@ export function createMockBindings(overrides?: Partial<Bindings>): Bindings {
     IPAYMU_API_KEY: 'test-ipaymu-api-key',
     IPAYMU_VA: 'test-ipaymu-va',
     IPAYMU_SECRET: 'test-ipaymu-secret',
+    ENCRYPTION_KEY: 'test-encryption-key-32chars-long!',
     ...overrides,
   };
 }

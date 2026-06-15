@@ -6,6 +6,36 @@
 // Re-export bindings types
 export type { Bindings, Variables } from './bindings';
 
+// Re-export AI types
+export type {
+  AIAgentConfig,
+  KnowledgeBaseEntry,
+  ProductEntry,
+  BusinessRule,
+  SalesPipeline,
+  PipelineStage,
+  Appointment,
+  AppointmentAvailability,
+  SupportTicket,
+  LeadScoreRecord,
+  LeadScore,
+  EscalationStaff,
+  PendingEscalation,
+  ConversationSummary,
+  TokenUsageRecord,
+  ActionTrigger,
+  AIAuditLog,
+  ChatCompletionMessage,
+  ChatCompletionRequest,
+  ChatCompletionResponse,
+  AIProcessingJob,
+  ReminderJob,
+  GuardrailResult,
+  GuardrailViolation,
+  ActionExecutionResult,
+  ConversationContext,
+} from './ai';
+
 // ============================================================================
 // Common / Utility Types
 // ============================================================================

@@ -11,6 +11,10 @@ export type Bindings = {
   R2: R2Bucket;
   /** Cloudflare Queue for broadcast message processing */
   BROADCAST_QUEUE: Queue;
+  /** Cloudflare Queue for AI pipeline processing jobs */
+  AI_QUEUE: Queue;
+  /** Cloudflare Queue for appointment reminder delivery */
+  REMINDER_QUEUE: Queue;
   /** Clerk secret key for session token verification */
   CLERK_SECRET_KEY: string;
   /** Go-Wa gateway base URL */
@@ -27,6 +31,8 @@ export type Bindings = {
   IPAYMU_VA: string;
   /** iPaymu shared secret for webhook signature validation */
   IPAYMU_SECRET: string;
+  /** Encryption key for securing tenant AI provider API keys at rest */
+  ENCRYPTION_KEY: string;
 };
 
 /**
