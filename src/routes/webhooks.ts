@@ -14,6 +14,9 @@ import { Hono } from 'hono';
 import type { Bindings } from '../types';
 import { processIPaymuWebhook } from '../services/webhooks';
 import { handleIncomingMessage } from '../services/gowa';
+import { getConfig } from '../services/ai/config';
+import { handleStaffResponse, parseStaffCommand } from '../services/ai/escalation';
+import { createKBEntry } from '../services/ai/knowledgeBase';
 import type { IPaymuWebhook, GoWaWebhookPayload } from '../types';
 
 /**
@@ -121,9 +124,57 @@ webhooksRouter.post('/gowa', async (c) => {
     );
   }
 
-  // Step 4: Process the incoming message
+  const resolvedTenantId = tenantId.trim();
+
+  // Step 4: Check for staff escalation correlation
+  // If the incoming message is from a known staff phone with a pending escalation,
+  // route to handleStaffResponse instead of normal processing
   try {
-    await handleIncomingMessage(tenantId.trim(), payload, c.env.DB, c.env.R2);
+    const staffResult = await c.env.DB
+      .prepare(
+        `SELECT pe.correlation_id FROM pending_escalations pe
+         INNER JOIN escalation_staff es ON pe.staff_id = es.id
+         WHERE pe.tenant_id = ? AND es.phone_number = ? AND pe.status = 'pending'
+         ORDER BY pe.created_at DESC LIMIT 1`
+      )
+      .bind(resolvedTenantId, payload.from)
+      .first<{ correlation_id: string }>();
+
+    if (staffResult) {
+      // This is a staff response to a pending escalation
+      await handleStaffResponse(c.env.DB, c.env.KV, staffResult.correlation_id, payload.message);
+      return c.json({ success: true, message: 'Staff response processed' }, 200);
+    }
+  } catch (error) {
+    // Non-blocking: if escalation check fails, continue with normal processing
+    console.error('[Webhook] Staff escalation check failed:', error);
+  }
+
+  // Step 5: Check for staff KB commands (#KB: title | content | category)
+  try {
+    const kbCommand = parseStaffCommand(payload.message);
+    if (kbCommand) {
+      await createKBEntry(c.env.DB, c.env.R2, resolvedTenantId, {
+        title: kbCommand.title,
+        content: kbCommand.content,
+        category: kbCommand.category,
+        entry_type: 'learned',
+        source: 'manual',
+      });
+      return c.json({ success: true, message: 'KB entry created' }, 200);
+    }
+  } catch (error) {
+    // Non-blocking: if KB command parsing/creation fails, continue with normal processing
+    console.error('[Webhook] KB command processing failed:', error);
+  }
+
+  // Step 6: Process the incoming message
+  let messageId: string | undefined;
+  let contactId: string | null = null;
+  try {
+    const result = await handleIncomingMessage(resolvedTenantId, payload, c.env.DB, c.env.R2);
+    messageId = result.id;
+    contactId = result.contact_id;
   } catch (error) {
     console.error('Failed to process Go-Wa webhook:', error);
     return c.json(
@@ -132,7 +183,25 @@ webhooksRouter.post('/gowa', async (c) => {
     );
   }
 
-  // Step 5: Return 200 OK
+  // Step 7: AI Processing - enqueue if tenant has AI config
+  try {
+    const aiConfig = await getConfig(c.env.DB, c.env.KV, resolvedTenantId);
+    if (aiConfig && aiConfig.active) {
+      await c.env.AI_QUEUE.send({
+        tenant_id: resolvedTenantId,
+        contact_id: contactId || null,
+        message_id: messageId,
+        sender_phone: payload.from,
+        message_content: payload.message,
+        message_type: payload.type,
+      });
+    }
+  } catch (error) {
+    // Non-blocking: don't fail webhook on AI queue error
+    console.error('[Webhook] Failed to enqueue AI job:', error);
+  }
+
+  // Step 8: Return 200 OK
   return c.json({ success: true, message: 'Message received' }, 200);
 });
 

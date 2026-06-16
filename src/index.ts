@@ -9,7 +9,9 @@ import { billingRouter } from './routes/billing';
 import { filesRouter } from './routes/files';
 import { webhooksRouter } from './routes/webhooks';
 import { auditRouter } from './routes/audit';
+import { aiConfigRouter } from './routes/ai/config';
 import { handleBroadcastQueue } from './workers/broadcastConsumer';
+import { handleAIQueue } from './workers/aiConsumer';
 import type { Bindings, Variables } from './types';
 
 export type { Bindings, Variables } from './types';
@@ -31,11 +33,19 @@ app.route('/api/broadcasts', broadcastsRouter);
 app.route('/api/billing', billingRouter);
 app.route('/api/files', filesRouter);
 app.route('/api/audit', auditRouter);
+app.route('/api/ai/config', aiConfigRouter);
 
 // Webhook endpoints (no auth middleware)
 app.route('/webhooks', webhooksRouter);
 
 export default {
   fetch: app.fetch,
-  queue: handleBroadcastQueue,
+  queue: async (batch: MessageBatch<unknown>, env: Bindings) => {
+    // Route to appropriate consumer based on queue name
+    if (batch.queue === 'broadcast-messages') {
+      await handleBroadcastQueue(batch as MessageBatch<import('./types').QueueMessage>, env);
+    } else if (batch.queue === 'ai-processing') {
+      await handleAIQueue(batch as MessageBatch<import('./types/ai').AIProcessingJob>, env);
+    }
+  },
 };
