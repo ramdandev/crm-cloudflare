@@ -10,6 +10,11 @@ import { filesRouter } from './routes/files';
 import { webhooksRouter } from './routes/webhooks';
 import { auditRouter } from './routes/audit';
 import { aiConfigRouter } from './routes/ai/config';
+import { aiKnowledgeBaseRouter } from './routes/ai/knowledgeBase';
+import { aiAppointmentsRouter } from './routes/ai/appointments';
+import { aiTicketsRouter } from './routes/ai/tickets';
+import { aiTokensRouter } from './routes/ai/tokens';
+import { aiEscalationRouter } from './routes/ai/escalation';
 import { handleBroadcastQueue } from './workers/broadcastConsumer';
 import { handleAIQueue } from './workers/aiConsumer';
 import type { Bindings, Variables } from './types';
@@ -34,6 +39,11 @@ app.route('/api/billing', billingRouter);
 app.route('/api/files', filesRouter);
 app.route('/api/audit', auditRouter);
 app.route('/api/ai/config', aiConfigRouter);
+app.route('/api/ai/knowledge-base', aiKnowledgeBaseRouter);
+app.route('/api/ai/appointments', aiAppointmentsRouter);
+app.route('/api/ai/tickets', aiTicketsRouter);
+app.route('/api/ai/tokens', aiTokensRouter);
+app.route('/api/ai/escalation', aiEscalationRouter);
 
 // Webhook endpoints (no auth middleware)
 app.route('/webhooks', webhooksRouter);
@@ -46,6 +56,28 @@ export default {
       await handleBroadcastQueue(batch as MessageBatch<import('./types').QueueMessage>, env);
     } else if (batch.queue === 'ai-processing') {
       await handleAIQueue(batch as MessageBatch<import('./types/ai').AIProcessingJob>, env);
+    }
+  },
+  scheduled: async (event: ScheduledEvent, env: Bindings, ctx: ExecutionContext) => {
+    // Handle cron triggers for periodic tasks
+    switch (event.cron) {
+      case '0 0 1 * *':
+        // Monthly token usage reset (1st of each month at midnight UTC)
+        console.log('[Scheduled] Monthly token usage reset triggered');
+        break;
+
+      case '0 2 * * *':
+        // Daily audit log purge (2 AM UTC daily)
+        console.log('[Scheduled] Daily audit log purge triggered');
+        break;
+
+      case '*/15 * * * *':
+        // Appointment reminder check (every 15 minutes)
+        console.log('[Scheduled] Appointment reminder check triggered');
+        break;
+
+      default:
+        console.log(`[Scheduled] Unknown cron trigger: ${event.cron}`);
     }
   },
 };
